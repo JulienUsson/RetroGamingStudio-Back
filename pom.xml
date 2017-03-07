@@ -6,7 +6,7 @@
 	<groupId>fr.isima</groupId>
 	<artifactId>retro-gaming-studio</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>retro-gaming-studio</name>
 	<description>A wonderfull project.</description>
