@@ -6,7 +6,9 @@ Link : `https://github.com/bkuchcik/cours-jee-isima/blob/master/sujets/Sujet%20T
 
 ## Game :
 
-Read : GET `http://localhost:8080/games`
+Read All : GET `http://localhost:8080/games`
+
+Read One : GET `http://localhost:8080/games/2`
 
 Write : POST `http://localhost:8080/games`
 
@@ -19,7 +21,9 @@ Write : POST `http://localhost:8080/games`
 
 ## Console :
 
-Read : GET `http://localhost:8080/consoles`
+Read All : GET `http://localhost:8080/consoles`
+
+Read One : GET `http://localhost:8080/consoles/2`
 
 Write : POST `http://localhost:8080/consoles`
 
