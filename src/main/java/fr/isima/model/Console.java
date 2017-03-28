@@ -9,10 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-/**
- * Created by Antraxxx on 27/03/2017.
- */
-
 @Entity
 public class Console {
     @Id

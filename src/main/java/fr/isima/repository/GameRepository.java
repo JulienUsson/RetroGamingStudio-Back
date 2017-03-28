@@ -2,7 +2,6 @@ package fr.isima.repository;
 
 import fr.isima.model.Game;
 import org.springframework.data.repository.CrudRepository;
-
 import java.util.Set;
 
 public interface GameRepository extends CrudRepository<Game, Long> {

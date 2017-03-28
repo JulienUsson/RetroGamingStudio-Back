@@ -7,10 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
-/**
- * Created by Antraxxx on 27/03/2017.
- */
-
 @Entity
 public class GameFranchise {
     @Id

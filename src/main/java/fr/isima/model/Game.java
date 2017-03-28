@@ -7,10 +7,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-/**
- * Created by Antraxxx on 27/03/2017.
- */
-
 @Entity
 public class Game {
     @Id
@@ -29,7 +25,7 @@ public class Game {
     @Getter @Setter private Long playability;
 
     @NotNull
-    @Getter @Setter private Long Graphics;
+    @Getter @Setter private Long graphics;
 
     @NotNull
     @Getter @Setter private Long interest;
