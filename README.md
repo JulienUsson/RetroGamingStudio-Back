@@ -10,7 +10,7 @@ Read All : GET `http://localhost:8080/games`
 
 Read One : GET `http://localhost:8080/games/2`
 
-Write : POST `http://localhost:8080/games`
+Write One : POST `http://localhost:8080/games`
 
     {
         name:"Mario Bros",
@@ -18,6 +18,8 @@ Write : POST `http://localhost:8080/games`
         graphics:1,
         interest:9
     }
+
+Delete One : `DELETE http://localhost:8080/games/2`
 
 ## Console :
 
@@ -30,6 +32,8 @@ Write : POST `http://localhost:8080/consoles`
     {
         "name":"ps3"
     }
+
+Delete One : `DELETE http://localhost:8080/consoles/2`
 
 # Application
 
