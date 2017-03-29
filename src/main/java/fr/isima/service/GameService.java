@@ -1,11 +1,15 @@
 package fr.isima.service;
 
+import fr.isima.model.Console;
 import fr.isima.model.Game;
+import fr.isima.repository.ConsoleRepository;
 import fr.isima.repository.GameRepository;
+import fr.isima.request.GameRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.HashSet;
 import java.util.Set;
 
 @Service
@@ -13,6 +17,9 @@ import java.util.Set;
 public class GameService {
     @Autowired
     private GameRepository gameRepository;
+
+    @Autowired
+    private ConsoleRepository consoleRepository;
 
     public Set<Game> findAll() {
         return gameRepository.findAll();
@@ -28,5 +35,23 @@ public class GameService {
 
     public void deleteById(Long id) {
         gameRepository.deleteById(id);
+    }
+
+    public Game gameRequestToGame(GameRequest gameRequest) {
+        Game game = new Game();
+        game.setName(gameRequest.getName());
+        game.setDescription(gameRequest.getDescription());
+        game.setPlayability(gameRequest.getPlayability());
+        game.setGraphics(gameRequest.getGraphics());
+        game.setInterest(gameRequest.getInterest());
+        game.setImage(gameRequest.getImage());
+        if(game.getConsoles() == null) {
+            game.setConsoles(new HashSet<>());
+        }
+        for(int consoleId : gameRequest.getConsoles()) {
+            Console console = consoleRepository.findById((long) consoleId);
+            game.getConsoles().add(console);
+        }
+        return game;
     }
 }

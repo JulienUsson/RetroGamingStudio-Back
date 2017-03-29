@@ -1,6 +1,7 @@
 package fr.isima.controller;
 
 import fr.isima.model.Game;
+import fr.isima.request.GameRequest;
 import fr.isima.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,8 @@ public class GameController {
     }
 
     @RequestMapping(value="/games", method = RequestMethod.POST)
-    public Game save(@RequestBody Game game) {
+    public Game save(@RequestBody GameRequest gameRequest) {
+        Game game = gameService.gameRequestToGame(gameRequest);
         return gameService.save(game);
     }
 
