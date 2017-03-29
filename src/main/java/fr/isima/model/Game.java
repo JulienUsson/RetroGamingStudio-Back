@@ -1,6 +1,7 @@
 package fr.isima.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +23,9 @@ public class Game {
     @Getter @Setter private String name;
 
     @NotNull
+    @Getter @Setter private String description;
+
+    @NotNull
     @Getter @Setter private Long playability;
 
     @NotNull
@@ -29,4 +33,8 @@ public class Game {
 
     @NotNull
     @Getter @Setter private Long interest;
+
+    @Column(nullable = false, length = 5000)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Getter @Setter private byte[] image;
 }
