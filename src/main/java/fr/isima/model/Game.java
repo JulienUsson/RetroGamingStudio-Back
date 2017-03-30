@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,6 +20,10 @@ public class Game {
     @JsonIgnore
     @Getter @Setter private  GameFranchise gameFranchise;
 
+    @ElementCollection
+    @JsonIgnore
+    @Getter @Setter private List<Integer> playabilityScores;
+
     @NotNull
     @Getter @Setter private String name;
 
@@ -31,16 +36,30 @@ public class Game {
             inverseJoinColumns = { @JoinColumn(name = "ID_GAME", referencedColumnName = "ID") })
     @Getter @Setter private Set<Console> consoles;
 
-    @NotNull
-    @Getter @Setter private Long playability;
-
-    @NotNull
-    @Getter @Setter private Long graphics;
-
-    @NotNull
-    @Getter @Setter private Long interest;
-
     @Column(nullable = false, length = 5000)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Getter @Setter private byte[] image;
+
+    @Transient
+    public int getPlayability() {
+        if(playabilityScores == null || playabilityScores.size() == 0) {
+            return 0;
+        }
+        int somme = 0;
+        for(int score : playabilityScores) {
+            somme += score;
+        }
+
+        return somme / playabilityScores.size();
+    }
+
+    @Transient
+    public Long getGraphics() {
+        return 0L;
+    }
+
+    @Transient
+    public Long getInterest() {
+        return 0L;
+    }
 }

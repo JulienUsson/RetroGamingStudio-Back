@@ -10,11 +10,5 @@ public class GameRequest {
 
     @Getter @Setter private int[] consoles;
 
-    @Getter @Setter private Long playability;
-
-    @Getter @Setter private Long graphics;
-
-    @Getter @Setter private Long interest;
-
     @Getter @Setter private byte[] image;
 }

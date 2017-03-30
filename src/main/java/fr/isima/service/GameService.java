@@ -41,9 +41,6 @@ public class GameService {
         Game game = new Game();
         game.setName(gameRequest.getName());
         game.setDescription(gameRequest.getDescription());
-        game.setPlayability(gameRequest.getPlayability());
-        game.setGraphics(gameRequest.getGraphics());
-        game.setInterest(gameRequest.getInterest());
         game.setImage(gameRequest.getImage());
         if(game.getConsoles() == null) {
             game.setConsoles(new HashSet<>());

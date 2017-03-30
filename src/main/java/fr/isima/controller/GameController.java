@@ -6,6 +6,7 @@ import fr.isima.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Set;
 
 @RestController
@@ -32,5 +33,12 @@ public class GameController {
     @RequestMapping(value="/games/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable long id) {
         gameService.deleteById(id);
+    }
+
+    @RequestMapping(value="/games/{id}/playabilityScores", method = RequestMethod.POST)
+    public void addPlayabilityScore(@PathVariable long id, @RequestBody Map<String, String> json) {
+        Game game = gameService.findById(id);
+        game.getPlayabilityScores().add(Integer.parseInt(json.get("score")));
+        gameService.save(game);
     }
 }
