@@ -24,6 +24,14 @@ public class Game {
     @JsonIgnore
     @Getter @Setter private List<Integer> playabilityScores;
 
+    @ElementCollection
+    @JsonIgnore
+    @Getter @Setter private List<Integer> graphicsScores;
+
+    @ElementCollection
+    @JsonIgnore
+    @Getter @Setter private List<Integer> interestScores;
+
     @NotNull
     @Getter @Setter private String name;
 
@@ -54,12 +62,28 @@ public class Game {
     }
 
     @Transient
-    public Long getGraphics() {
-        return 0L;
+    public int getGraphics() {
+        if(graphicsScores == null || graphicsScores.size() == 0) {
+            return 0;
+        }
+        int somme = 0;
+        for(int score : graphicsScores) {
+            somme += score;
+        }
+
+        return somme / graphicsScores.size();
     }
 
     @Transient
-    public Long getInterest() {
-        return 0L;
+    public int getInterest() {
+        if(interestScores == null || interestScores.size() == 0) {
+            return 0;
+        }
+        int somme = 0;
+        for(int score : interestScores) {
+            somme += score;
+        }
+
+        return somme / interestScores.size();
     }
 }

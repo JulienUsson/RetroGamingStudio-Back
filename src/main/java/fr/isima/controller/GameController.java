@@ -41,4 +41,18 @@ public class GameController {
         game.getPlayabilityScores().add(Integer.parseInt(json.get("score")));
         gameService.save(game);
     }
+
+    @RequestMapping(value="/games/{id}/graphicsScores", method = RequestMethod.POST)
+    public void addGraphicsScore(@PathVariable long id, @RequestBody Map<String, String> json) {
+        Game game = gameService.findById(id);
+        game.getGraphicsScores().add(Integer.parseInt(json.get("score")));
+        gameService.save(game);
+    }
+
+    @RequestMapping(value="/games/{id}/interestScores", method = RequestMethod.POST)
+    public void addInterestScore(@PathVariable long id, @RequestBody Map<String, String> json) {
+        Game game = gameService.findById(id);
+        game.getInterestScores().add(Integer.parseInt(json.get("score")));
+        gameService.save(game);
+    }
 }
