@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
@@ -17,5 +18,5 @@ public class GameFranchise {
     @Getter @Setter private String name;
 
     @OneToMany(cascade= CascadeType.ALL, mappedBy="gameFranchise")
-    @Getter @Setter private Set<Game> games;
+    @Getter @Setter private Set<Game> games = new LinkedHashSet<>();
 }
