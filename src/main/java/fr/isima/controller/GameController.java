@@ -36,23 +36,24 @@ public class GameController {
     }
 
     @RequestMapping(value="/games/{id}/playabilityScores", method = RequestMethod.POST)
-    public void addPlayabilityScore(@PathVariable long id, @RequestBody Map<String, String> json) {
+    public void addPlayabilityScore(@PathVariable long id, @RequestBody Map<String, Integer> json) {
         Game game = gameService.findById(id);
-        game.getPlayabilityScores().add(Integer.parseInt(json.get("score")));
+        game.getPlayabilityScores().add(json.get("score"));
         gameService.save(game);
     }
 
     @RequestMapping(value="/games/{id}/graphicsScores", method = RequestMethod.POST)
-    public void addGraphicsScore(@PathVariable long id, @RequestBody Map<String, String> json) {
+    public void addGraphicsScore(@PathVariable long id, @RequestBody Map<String, Integer> json) {
         Game game = gameService.findById(id);
-        game.getGraphicsScores().add(Integer.parseInt(json.get("score")));
+        game.getGraphicsScores().add(json.get("score"));
         gameService.save(game);
     }
 
     @RequestMapping(value="/games/{id}/interestScores", method = RequestMethod.POST)
-    public void addInterestScore(@PathVariable long id, @RequestBody Map<String, String> json) {
+    public Game addInterestScore(@PathVariable long id, @RequestBody Map<String, Integer> json) {
         Game game = gameService.findById(id);
-        game.getInterestScores().add(Integer.parseInt(json.get("score")));
+        game.getInterestScores().add(json.get("score"));
         gameService.save(game);
+        return game;
     }
 }
