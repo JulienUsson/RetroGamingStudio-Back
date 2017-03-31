@@ -1,12 +1,12 @@
 package fr.isima.repository;
 
 import fr.isima.model.GameFranchise;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-import java.util.Set;
-
-public interface GameFranchiseRepository extends CrudRepository<GameFranchise, Long> {
-    Set<GameFranchise> findAll();
+public interface GameFranchiseRepository extends PagingAndSortingRepository<GameFranchise, Long> {
+    Page<GameFranchise> findAll(Pageable pageable);
     GameFranchise findById(Long id);
     GameFranchise save(GameFranchise console);
     void deleteById(Long id);
