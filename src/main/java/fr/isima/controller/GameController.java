@@ -4,22 +4,25 @@ import fr.isima.model.Game;
 import fr.isima.request.GameRequest;
 import fr.isima.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
 
 @RestController
 public class GameController {
+    private static final int ITEMS_PER_PAGE = 12;
     @Autowired
     private GameService gameService;
 
-    @RequestMapping(value="/games")
-    public Set<Game> getAll() {
-        return gameService.findAll();
+    @RequestMapping(value="/games", method = RequestMethod.GET)
+    public Page<Game> getAll(@RequestParam(required = false, defaultValue = "1") int page) {
+        return gameService.findAll(new PageRequest(page - 1, ITEMS_PER_PAGE));
     }
 
-    @RequestMapping(value="/games/{id}")
+    @RequestMapping(value="/games/{id}", method = RequestMethod.GET)
     public Game getById(@PathVariable long id) {
         return gameService.findById(id);
     }

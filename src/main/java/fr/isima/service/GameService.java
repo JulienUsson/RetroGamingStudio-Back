@@ -6,6 +6,8 @@ import fr.isima.repository.ConsoleRepository;
 import fr.isima.repository.GameRepository;
 import fr.isima.request.GameRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -21,8 +23,8 @@ public class GameService {
     @Autowired
     private ConsoleRepository consoleRepository;
 
-    public Set<Game> findAll() {
-        return gameRepository.findAll();
+    public Page<Game> findAll(Pageable pageable) {
+        return gameRepository.findAll(pageable);
     }
 
     public Game findById(Long id) {
