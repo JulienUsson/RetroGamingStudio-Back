@@ -10,7 +10,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.Set;
 
 @RestController
 public class GameFranchiseController {
@@ -46,7 +45,8 @@ public class GameFranchiseController {
         GameFranchise gameFranchise =  gameFranchiseService.findById(id);
         Game game = gameService.findById(json.get("id"));
         gameFranchise.getGames().add(game);
-        gameFranchiseService.save(gameFranchise);
+        game.setGameFranchise(gameFranchise);
+        gameService.save(game);
         return gameFranchise;
     }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,8 +18,7 @@ public class Game {
 
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "GAME_FRANCHISE_ID")
-    @JsonIgnore
-    @Getter @Setter private  GameFranchise gameFranchise;
+    @Getter @Setter private GameFranchise gameFranchise;
 
     @ElementCollection
     @JsonIgnore
