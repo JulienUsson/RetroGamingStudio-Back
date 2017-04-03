@@ -13,10 +13,10 @@ Read One : GET `http://localhost:8080/games/2`
 Write One : POST `http://localhost:8080/games`
 
     {
-        "name":"Mario Bros",
-        "playability":5,
-        "graphics":1,
-        "interest":9
+        "name":"Mario Bros 1",
+        "description":"Easiest game in the world!",
+        "consoles":[1,2],
+        "image":"dGVzdA=="
     }
 
 Delete One : `DELETE http://localhost:8080/games/2`
