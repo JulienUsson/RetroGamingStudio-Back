@@ -49,11 +49,11 @@ public class Game {
     @Getter @Setter private byte[] image;
 
     @Transient
-    public int getPlayability() {
+    public float getPlayability() {
         if(playabilityScores == null || playabilityScores.size() == 0) {
             return 0;
         }
-        int somme = 0;
+        float somme = 0;
         for(int score : playabilityScores) {
             somme += score;
         }
@@ -62,11 +62,11 @@ public class Game {
     }
 
     @Transient
-    public int getGraphics() {
+    public float getGraphics() {
         if(graphicsScores == null || graphicsScores.size() == 0) {
             return 0;
         }
-        int somme = 0;
+        float somme = 0;
         for(int score : graphicsScores) {
             somme += score;
         }
@@ -75,11 +75,11 @@ public class Game {
     }
 
     @Transient
-    public int getInterest() {
+    public float getInterest() {
         if(interestScores == null || interestScores.size() == 0) {
             return 0;
         }
-        int somme = 0;
+        float somme = 0;
         for(int score : interestScores) {
             somme += score;
         }
