@@ -1,8 +1,12 @@
 package fr.isima.service;
 
+import com.querydsl.core.types.Predicate;
+import com.querydsl.core.types.dsl.Expressions;
+import com.querydsl.core.types.dsl.StringExpression;
 import fr.isima.model.Console;
 import fr.isima.model.Game;
 import fr.isima.model.QGame;
+import fr.isima.model.QGameFranchise;
 import fr.isima.repository.ConsoleRepository;
 import fr.isima.repository.GameRepository;
 import fr.isima.request.GameRequest;
@@ -24,8 +28,16 @@ public class GameService {
     private ConsoleRepository consoleRepository;
 
     public Page<Game> findAll(Pageable pageable) {
+        return gameRepository.findAll(pageable);
+    }
+
+    public Page<Game> findAllWhere(String searchedValue, Pageable pageable) {
         QGame game = QGame.game;
-        return gameRepository.findAll(game.name.like("%cou%"), pageable);
+        QGameFranchise gameFranchise = QGameFranchise.gameFranchise;
+        StringExpression searchExpression = Expressions.asString("%").concat(searchedValue).concat("%");
+        Predicate query = game.name.likeIgnoreCase(searchExpression);
+//                .or(gameFranchise.name.likeIgnoreCase(Expressions.asString("%").concat(searchedValue).concat("%")));
+        return gameRepository.findAll(query, pageable);
     }
 
     public Game findById(Long id) {

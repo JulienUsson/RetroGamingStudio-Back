@@ -18,7 +18,10 @@ public class GameController {
     private GameService gameService;
 
     @RequestMapping(value="/games", method = RequestMethod.GET)
-    public Page<Game> getAll(@RequestParam(required = false, defaultValue = "1") int page) {
+    public Page<Game> getAll(@RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false) String search) {
+        if(search != null && !search.isEmpty()) {
+            return gameService.findAllWhere(search, new PageRequest(page - 1, ITEMS_PER_PAGE));
+        }
         return gameService.findAll(new PageRequest(page - 1, ITEMS_PER_PAGE));
     }
 
