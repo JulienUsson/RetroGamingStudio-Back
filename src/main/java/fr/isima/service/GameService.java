@@ -2,6 +2,7 @@ package fr.isima.service;
 
 import fr.isima.model.Console;
 import fr.isima.model.Game;
+import fr.isima.model.QGame;
 import fr.isima.repository.ConsoleRepository;
 import fr.isima.repository.GameRepository;
 import fr.isima.request.GameRequest;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.HashSet;
-import java.util.Set;
 
 @Service
 @Transactional
@@ -24,7 +24,8 @@ public class GameService {
     private ConsoleRepository consoleRepository;
 
     public Page<Game> findAll(Pageable pageable) {
-        return gameRepository.findAll(pageable);
+        QGame game = QGame.game;
+        return gameRepository.findAll(game.name.like("%cou%"), pageable);
     }
 
     public Game findById(Long id) {
