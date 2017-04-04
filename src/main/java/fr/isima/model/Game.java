@@ -62,6 +62,11 @@ public class Game {
     }
 
     @Transient
+    public int getPlayabilityScoresCount() {
+        return playabilityScores.size();
+    }
+
+    @Transient
     public float getGraphics() {
         if(graphicsScores == null || graphicsScores.size() == 0) {
             return 0;
@@ -75,6 +80,11 @@ public class Game {
     }
 
     @Transient
+    public int getGraphicsScoresCount() {
+        return graphicsScores.size();
+    }
+
+    @Transient
     public float getInterest() {
         if(interestScores == null || interestScores.size() == 0) {
             return 0;
@@ -85,5 +95,10 @@ public class Game {
         }
 
         return somme / interestScores.size();
+    }
+
+    @Transient
+    public int getInterestScoresCount() {
+        return interestScores.size();
     }
 }
