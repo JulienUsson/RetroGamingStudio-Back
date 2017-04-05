@@ -33,10 +33,9 @@ public class GameService {
 
     public Page<Game> findAllWhere(String searchedValue, Pageable pageable) {
         QGame game = QGame.game;
-        QGameFranchise gameFranchise = QGameFranchise.gameFranchise;
         StringExpression searchExpression = Expressions.asString("%").concat(searchedValue).concat("%");
-        Predicate query = game.name.likeIgnoreCase(searchExpression);
-//                .or(gameFranchise.name.likeIgnoreCase(Expressions.asString("%").concat(searchedValue).concat("%")));
+        Predicate query = game.name.likeIgnoreCase(searchExpression)
+                .or(game.gameFranchise.name.likeIgnoreCase(searchExpression));
         return gameRepository.findAll(query, pageable);
     }
 
