@@ -14,6 +14,7 @@ Write One : POST `http://localhost:8080/games`
 
     {
         "name":"Mario Bros 1",
+        "gameFranchise": 1,  // Optional
         "description":"Easiest game in the world!",
         "consoles":[1,2],
         "image":"dGVzdA=="
@@ -31,6 +32,20 @@ Write : POST `http://localhost:8080/consoles`
 
     {
         "name":"ps3"
+    }
+
+Delete One : `DELETE http://localhost:8080/consoles/2`
+
+## Game Franchise :
+
+Read All : GET `http://localhost:8080/gameFranchises`
+
+Read One : GET `http://localhost:8080/gameFranchises/2`
+
+Write : POST `http://localhost:8080/gameFranchises`
+
+    {
+        "name":"Super Mario Bros"
     }
 
 Delete One : `DELETE http://localhost:8080/consoles/2`

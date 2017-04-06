@@ -14,6 +14,7 @@ import java.util.Map;
 @RestController
 public class GameFranchiseController {
     private static final int ITEMS_PER_PAGE = 12;
+
     @Autowired
     private GameFranchiseService gameFranchiseService;
 
@@ -38,15 +39,5 @@ public class GameFranchiseController {
     @RequestMapping(value="/gameFranchises/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable long id) {
         gameFranchiseService.deleteById(id);
-    }
-
-    @RequestMapping(value="/gameFranchises/{id}/games", method = RequestMethod.POST)
-    public GameFranchise addGame(@PathVariable long id, @RequestBody Map<String, Long> json) {
-        GameFranchise gameFranchise =  gameFranchiseService.findById(id);
-        Game game = gameService.findById(json.get("id"));
-        gameFranchise.getGames().add(game);
-        game.setGameFranchise(gameFranchise);
-        gameService.save(game);
-        return gameFranchise;
     }
 }

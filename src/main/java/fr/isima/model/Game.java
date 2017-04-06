@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,6 +17,8 @@ public class Game {
 
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "GAME_FRANCHISE_ID")
+    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+    @JsonIdentityReference(alwaysAsId=true)
     @Getter @Setter private GameFranchise gameFranchise;
 
     @ElementCollection
@@ -42,6 +43,8 @@ public class Game {
     @JoinTable(name = "GAME_CONSOLE",
             joinColumns = { @JoinColumn(name = "ID_CONSOLE", referencedColumnName = "ID") },
             inverseJoinColumns = { @JoinColumn(name = "ID_GAME", referencedColumnName = "ID") })
+    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+    @JsonIdentityReference(alwaysAsId=true)
     @Getter @Setter private Set<Console> consoles;
 
     @Column(nullable = false, length = 5000)
