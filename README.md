@@ -2,7 +2,9 @@
 
 Link : `https://github.com/bkuchcik/cours-jee-isima/blob/master/sujets/Sujet%20TP%20final.pdf`
 
-# API :
+# API of RetroGamingStudio project
+
+Back-End is available at : `https://github.com/vmizoules/RetroGamingStudio-Front`
 
 ## Game :
 
