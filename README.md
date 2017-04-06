@@ -4,7 +4,7 @@ Link : `https://github.com/bkuchcik/cours-jee-isima/blob/master/sujets/Sujet%20T
 
 # API of RetroGamingStudio project
 
-Back-End is available at : `https://github.com/vmizoules/RetroGamingStudio-Front`
+Front-End is available at : [RetroGamingStudio-Front](https://github.com/vmizoules/RetroGamingStudio-Front)
 
 ## Game :
 
